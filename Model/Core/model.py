@@ -29,7 +29,6 @@ def make_model(batch, shape):
         x = base_modelLayer(x, shape=shape, batch=batch)
         x = tf.keras.layers.GlobalAveragePooling2D()(x)
         x = tf.keras.layers.Dropout(0.2)(x)
-        x = tf.keras.layers.GlobalAveragePooling2D()(x)
         output = tf.keras.layers.Dense(1, activation='sigmoid')(x)
         model = tf.keras.Model(input, output)
     except:
