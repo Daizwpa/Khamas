@@ -18,6 +18,7 @@ def base_modelLayer(x, shape, batch, weights='imagenet'):
     base_model = tf.keras.applications.ResNet50(input_shape=shape,
                                                 include_top=False,
                                                 weights=weights)
+    base_model.trainable = False
     return base_model(x)
 
 
