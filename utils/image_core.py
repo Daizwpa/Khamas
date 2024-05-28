@@ -1,8 +1,9 @@
 
 import skimage as ski
-import CV2 as cv
+import cv2 as cv
 import os
-from skimage.transform import resize
+from skimage.transform import resize, rotate
+from skimage import img_as_ubyte
 
 
 def imread(path):
@@ -16,7 +17,7 @@ def imread(path):
     """
     image = None
     if os.path.exists(path=path):
-        image = cv.imread(path)
+        image = ski.io.imread(fname=path)
     else:
         raise Exception("There is no image in this path " + path)
 
@@ -36,8 +37,44 @@ def imresize(image, size_x, size_y):
     """
     try:
         image = resize(image=image, output_shape=(size_x, size_y), )
-        pass
     except:
-        pass
-    pass
+        raise
     return image
+
+
+def imrotate(image, r):
+    """rotate image
+
+    Args:
+        image (ndarray): image
+        r (int): angler
+
+    Returns:
+        ndarray: image
+    """
+    try:
+        image = rotate(image=image, angle=r)
+    except:
+        raise
+    return image
+
+
+def imshow(image):
+    try:
+        ski.io.imshow(image)
+    except:
+        raise
+
+
+def imSave(image, path):
+    """save image
+
+    Args:
+        image (ndarray): image
+        path (str): path to save
+    """
+    try:
+        image = img_as_ubyte(image)
+        ski.io.imsave(fname=path, arr=image)
+    except:
+        raise

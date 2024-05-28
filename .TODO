@@ -1,0 +1,5 @@
+# Pre-processing:
+# 1 - downe sampling  # [in controller]
+# 4 - brithness # [let it later]
+# 2 normlization
+# 3 - rotation # [in controller]
