@@ -23,6 +23,7 @@ def base_modelLayer(x, shape, batch, weights='imagenet'):
 
 
 def make_model(batch, shape):
+    model = None
     try:
         input = tf.keras.Input(shape=shape)
         x = augmentationLayer(input)
@@ -34,3 +35,4 @@ def make_model(batch, shape):
         model = tf.keras.Model(input, output)
     except:
         raise
+    return model

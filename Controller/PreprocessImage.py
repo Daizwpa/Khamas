@@ -1,4 +1,5 @@
 from utils.image_core import imread, imresize, imrotate
+from skimage import exposure
 
 
 class PreProcess:
@@ -15,6 +16,7 @@ class PreProcess:
             image = imresize(image=image, size_x=self.size_x,
                              size_y=self.size_y)
             image = imrotate(image=image, r=self.rotate)
+            image = exposure.adjust_log(image=image)
         except:
             raise
         return image
